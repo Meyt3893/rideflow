@@ -1,0 +1,19 @@
+{
+  "name": "joint-work",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Recruiting home assignment mono-repo with Express backend and Vue 3 frontend",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev": "./scripts/start-all.sh",
+    "stop": "./scripts/stop-all.sh",
+    "db:apply": "atlas schema apply --env local"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
