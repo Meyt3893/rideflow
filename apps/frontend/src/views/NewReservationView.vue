@@ -9,7 +9,7 @@ function goBack() {
   router.push('/');
 }
 
-function handleCreated(booking: Booking) {
+function handleCreated(_booking: Booking) {
   router.push('/');
 }
 </script>

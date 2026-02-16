@@ -1,7 +1,7 @@
 /**
  * Booking status values
  */
-export type BookingStatus = 'pending' | 'confirmed' | 'cancelled' | 'completed';
+export type BookingStatus = 'pending' | 'confirmed' | 'cancelled' | 'completed' | 'deleted';
 
 /**
  * Booking entity - represents a vehicle reservation

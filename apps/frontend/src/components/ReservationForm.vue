@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import type { Booking, CreateBookingPayload } from '@joint-work/shared';
 
 const emit = defineEmits<{
@@ -24,15 +24,6 @@ const passengerName = ref('');
 const passengerEmail = ref('');
 const passengerPhone = ref('');
 const notes = ref('');
-
-const isValid = computed(() => {
-  return (
-    pickupAddress.value.trim() !== '' &&
-    dropoffAddress.value.trim() !== '' &&
-    pickupTime.value !== '' &&
-    passengerName.value.trim() !== ''
-  );
-});
 
 function resetForm() {
   carProviderId.value = 1;
