@@ -56,7 +56,18 @@ docker run -d --name joint_work_mysql \
 pnpm run db:apply
 ```
 
-### 5. Run the Application
+### 5. Seed Test Data
+
+Load the database with sample bookings:
+
+```bash
+# Connect to MySQL and run the seed script
+docker exec -i joint_work_mysql mysql -uroot -ppassword joint_work < db/seed.sql
+```
+
+This creates 11 test bookings with various statuses (pending, confirmed, completed, cancelled, deleted).
+
+### 6. Run the Application
 
 In separate terminals:
 

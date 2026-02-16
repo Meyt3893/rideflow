@@ -20,7 +20,7 @@ const createBookingSchema = z.object({
   passengerEmail: z.string().email().max(255).optional(),
   passengerPhone: z.string().max(50).optional(),
   notes: z.string().optional(),
-  status: z.enum(['pending', 'confirmed', 'cancelled', 'completed']).optional(),
+  status: z.enum(['pending', 'confirmed', 'cancelled', 'completed', 'deleted']).optional(),
 });
 
 /**

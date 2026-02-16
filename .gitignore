@@ -32,3 +32,6 @@ coverage/
 # Temp files
 tmp/
 temp/
+
+# Private files (do not commit)
+ANSWER_KEY_PRIVATE.md

@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   passenger_email VARCHAR(255) NULL,
   passenger_phone VARCHAR(50) NULL,
   notes TEXT NULL,
-  status ENUM('pending', 'confirmed', 'cancelled', 'completed') NOT NULL DEFAULT 'pending',
+  status ENUM('pending', 'confirmed', 'cancelled', 'completed', 'deleted') NOT NULL DEFAULT 'pending',
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

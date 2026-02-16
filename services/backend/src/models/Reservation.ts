@@ -57,7 +57,7 @@ export class Reservation {
    */
   static async getAll(): Promise<Booking[]> {
     const [rows] = await pool.query<BookingRow[]>(
-      'SELECT * FROM bookings ORDER BY created DESC'
+      "SELECT * FROM bookings WHERE status IN ('pending', 'confirmed') ORDER BY created DESC"
     );
     return rows.map(rowToBooking);
   }

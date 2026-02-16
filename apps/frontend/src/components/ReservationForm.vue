@@ -51,8 +51,6 @@ function resetForm() {
 }
 
 async function handleSubmit() {
-  if (!isValid.value) return;
-
   submitting.value = true;
   error.value = null;
   success.value = false;
@@ -62,7 +60,7 @@ async function handleSubmit() {
     vehicleType: vehicleType.value,
     pickupAddress: pickupAddress.value,
     dropoffAddress: dropoffAddress.value,
-    pickupTime: new Date(pickupTime.value).toISOString(),
+    pickupTime: pickupTime.value ? new Date(pickupTime.value).toISOString() : '',
     dropoffTime: dropoffTime.value ? new Date(dropoffTime.value).toISOString() : undefined,
     isTimeJob: isTimeJob.value,
     timeJobHours: isTimeJob.value ? timeJobHours.value : undefined,
@@ -80,19 +78,17 @@ async function handleSubmit() {
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
-      const data = await response.json();
-      throw new Error(data.error || 'Failed to create reservation');
+    const data = await response.json();
+    
+    if (data.id) {
+      emit('created', data);
+      success.value = true;
+      resetForm();
+
+      setTimeout(() => {
+        success.value = false;
+      }, 3000);
     }
-
-    const booking: Booking = await response.json();
-    emit('created', booking);
-    success.value = true;
-    resetForm();
-
-    setTimeout(() => {
-      success.value = false;
-    }, 3000);
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'An error occurred';
   } finally {
@@ -116,7 +112,6 @@ async function handleSubmit() {
             id="passengerName"
             v-model="passengerName"
             type="text"
-            required
           />
         </div>
         <div class="form-group">
@@ -175,7 +170,6 @@ async function handleSubmit() {
             id="pickupAddress"
             v-model="pickupAddress"
             type="text"
-            required
           />
         </div>
         <div class="form-group">
@@ -184,7 +178,6 @@ async function handleSubmit() {
             id="dropoffAddress"
             v-model="dropoffAddress"
             type="text"
-            required
           />
         </div>
       </div>
@@ -196,7 +189,6 @@ async function handleSubmit() {
             id="pickupTime"
             v-model="pickupTime"
             type="datetime-local"
-            required
           />
         </div>
         <div class="form-group">
@@ -241,7 +233,7 @@ async function handleSubmit() {
         </div>
       </div>
 
-      <button type="submit" :disabled="!isValid || submitting">
+      <button type="submit" :disabled="submitting">
         {{ submitting ? 'Creating...' : 'Create Reservation' }}
       </button>
     </form>
