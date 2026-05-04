@@ -182,14 +182,6 @@ async function handleSubmit() {
             type="datetime-local"
           />
         </div>
-        <div class="form-group">
-          <label for="dropoffTime">Dropoff Time</label>
-          <input
-            id="dropoffTime"
-            v-model="dropoffTime"
-            type="datetime-local"
-          />
-        </div>
       </div>
 
       <div class="form-row">
