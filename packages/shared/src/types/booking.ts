@@ -13,7 +13,6 @@ export interface Booking {
   pickupAddress: string;
   dropoffAddress: string;
   pickupTime: string;
-  dropoffTime?: string | undefined;
   isTimeJob: boolean;
   timeJobHours?: number | undefined;
   passengers: number;
@@ -35,7 +34,6 @@ export interface CreateBookingPayload {
   pickupAddress: string;
   dropoffAddress: string;
   pickupTime: string;
-  dropoffTime?: string | undefined;
   isTimeJob: boolean;
   timeJobHours?: number | undefined;
   passengers: number;

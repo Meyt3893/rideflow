@@ -9,7 +9,6 @@ interface BookingRow extends RowDataPacket {
   pickup_address: string;
   dropoff_address: string;
   pickup_time: Date;
-  dropoff_time: Date | null;
   is_time_job: number;
   time_job_hours: string | null;
   passengers: number;
@@ -37,7 +36,6 @@ function rowToBooking(row: BookingRow): Booking {
     pickupAddress: row.pickup_address,
     dropoffAddress: row.dropoff_address,
     pickupTime: row.pickup_time.toISOString(),
-    dropoffTime: row.dropoff_time?.toISOString(),
     isTimeJob: Boolean(row.is_time_job),
     timeJobHours: row.time_job_hours ? parseFloat(row.time_job_hours) : undefined,
     passengers: row.passengers,
@@ -81,17 +79,16 @@ export class Reservation {
     const [result] = await pool.query<ResultSetHeader>(
       `INSERT INTO bookings (
         car_provider_id, vehicle_type, pickup_address, dropoff_address,
-        pickup_time, dropoff_time, is_time_job, time_job_hours,
+        pickup_time, is_time_job, time_job_hours,
         passengers, passenger_name, passenger_email, passenger_phone,
         notes, status
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         payload.carProviderId,
         payload.vehicleType,
         payload.pickupAddress,
         payload.dropoffAddress,
         toMySQLDateTime(payload.pickupTime),
-        payload.dropoffTime ? toMySQLDateTime(payload.dropoffTime) : null,
         payload.isTimeJob,
         payload.timeJobHours ?? null,
         payload.passengers,

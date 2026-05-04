@@ -16,7 +16,6 @@ const vehicleType = ref('sedan');
 const pickupAddress = ref('');
 const dropoffAddress = ref('');
 const pickupTime = ref('');
-const dropoffTime = ref('');
 const isTimeJob = ref(false);
 const timeJobHours = ref<number | undefined>(undefined);
 const passengers = ref(1);
@@ -31,7 +30,6 @@ function resetForm() {
   pickupAddress.value = '';
   dropoffAddress.value = '';
   pickupTime.value = '';
-  dropoffTime.value = '';
   isTimeJob.value = false;
   timeJobHours.value = undefined;
   passengers.value = 1;
@@ -52,7 +50,6 @@ async function handleSubmit() {
     pickupAddress: pickupAddress.value,
     dropoffAddress: dropoffAddress.value,
     pickupTime: pickupTime.value ? new Date(pickupTime.value).toISOString() : '',
-    dropoffTime: dropoffTime.value ? new Date(dropoffTime.value).toISOString() : undefined,
     isTimeJob: isTimeJob.value,
     timeJobHours: isTimeJob.value ? timeJobHours.value : undefined,
     passengers: passengers.value,

@@ -56,7 +56,6 @@ curl -s -X POST "$API_URL/api/reservations" \
     "pickupAddress": "The Plaza Hotel, 768 5th Ave",
     "dropoffAddress": "Lincoln Center, 10 Lincoln Center Plaza",
     "pickupTime": "2026-03-01T19:00:00.000Z",
-    "dropoffTime": "2026-03-01T19:30:00.000Z",
     "isTimeJob": false,
     "passengers": 2,
     "passengerName": "Michael Chen",

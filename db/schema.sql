@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS bookings (
   pickup_address VARCHAR(500) NOT NULL,
   dropoff_address VARCHAR(500) NOT NULL,
   pickup_time DATETIME NOT NULL,
-  dropoff_time DATETIME NULL,
   is_time_job BOOLEAN NOT NULL DEFAULT FALSE,
   time_job_hours DECIMAL(4,2) NULL,
   passengers INT NOT NULL DEFAULT 1,

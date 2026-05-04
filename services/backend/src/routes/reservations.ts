@@ -12,7 +12,6 @@ const createBookingSchema = z.object({
   pickupAddress: z.string().min(1).max(500),
   dropoffAddress: z.string().min(1).max(500),
   pickupTime: z.string().datetime(),
-  dropoffTime: z.string().datetime().optional(),
   isTimeJob: z.boolean(),
   timeJobHours: z.number().positive().optional(),
   passengers: z.number().int().min(1).default(1),
